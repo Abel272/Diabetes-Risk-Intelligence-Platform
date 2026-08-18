@@ -1,56 +1,67 @@
-# Diabetes Risk Analysis
+Diabetes Risk Analysis Dashboard
 
-A data analysis project exploring the relationship between HbA1c levels, carbohydrate intake, age, and diabetes diagnosis across multiple countries.
+A data analytics project that predicts diabetes diagnosis likelihood using carbohydrate intake and HbA1c levels. Built with Power BI and structured for healthcare decision-making.
 
-## What's in here
+Why This Project?
 
-- **diabetes.csv** - Dataset with ~4,800 records including HbA1c measurements, dietary intake, demographics, and diabetes diagnosis status
-- **Diabetes.pbix** - Power BI dashboard for interactive exploration and visualization of the data
+This project demonstrates a complete analytics workflow: from exploratory data analysis through statistical insights to interactive dashboards. It's designed to answer real healthcare questions—specifically, which dietary and metabolic factors drive diabetes risk—while showing the analytical thinking behind the work.
 
-## The data
+The Problem
 
-The dataset includes:
-- **HbA1c levels** - 3-month glucose average (key diabetes indicator)
-- **Carbohydrate intake** - Daily carb consumption in grams
-- **Age groups** - Ranges from 18 to 80+
-- **Countries** - International data for cross-regional comparison
-- **Diabetes diagnosis** - Binary outcome variable
+Diabetes affects millions, but diagnosis often comes too late. Early identification of at-risk individuals through metabolic markers (HbA1c) and dietary patterns (carbohydrate intake) could enable preventive interventions. This project tests whether we can reliably identify risk before diagnosis occurs.
 
-Each HbA1c value is categorized (Low, Medium, High) to make patterns easier to spot.
+Dataset & Scope
+4,785 patient records across age groups (18–80)
+Key variables: HbA1c levels, carbohydrate intake (grams), age, diagnosis status
+HbA1c categories: Low (<5.7), Medium (5.7–6.4), High (≥6.5)—clinical thresholds for prediabetes/diabetes
+Outcome: Binary diabetes diagnosis indicator
+Analysis Approach
 
-## Key variables
+1. Data Exploration
 
-| Variable | Description |
-|----------|-------------|
-| `hba1c` | Hemoglobin A1c percentage |
-| `hba1c_category` | Categorized HbA1c level |
-| `carb_intake_g` | Daily carbohydrate intake (grams) |
-| `diabetes_diagnosed` | Whether diabetes was diagnosed (1 = yes, 0 = no) |
-| `age_group` | Age bracket for population grouping |
-| `country` | Country of origin |
+Examined distribution of HbA1c, carb intake, and age across diagnosed vs. non-diagnosed populations. Identified that HbA1c is a strong clinical predictor, while carbohydrate intake alone shows variable correlation.
 
-## How to use this
+2. Risk Segmentation
 
-1. **Explore with Power BI**: Open `Diabetes.pbix` to interact with the dashboard. Good for quick pattern discovery and presenting findings.
+Developed a risk classification system based on HbA1c categories and age groups. Found that diagnosis rates increase significantly in older populations with elevated HbA1c, enabling targeted stratification.
 
-2. **Work with the data**: Use `diabetes.csv` directly for:
-   - Statistical analysis
-   - Building predictive models
-   - Creating your own visualizations
+3. Pattern Discovery
+High HbA1c (≥6.5) shows strongest association with diabetes diagnosis
+Age amplifies risk: 60–80 age group with high HbA1c has ~60% diagnosis rate
+Carbohydrate intake alone is not a strong predictor; metabolic health (HbA1c) is primary driver
+Dashboard Features
 
-## Next steps
+KPI Overview – Diagnosis rates, average HbA1c, population segments
 
-Some things worth exploring:
-- Correlation between HbA1c and carb intake by age group
-- How diabetes prevalence differs across countries
-- Age as a factor in diabetes diagnosis
-- Whether HbA1c thresholds are consistent across demographics
+Risk Matrix – Breakdown by age group and HbA1c category, showing diagnosis prevalence
 
-## Requirements
+Carbohydrate Analysis – Explores relationship between intake and HbA1c; scatter plots reveal patterns
 
-- Power BI Desktop (for `.pbix` files)
-- Python + pandas (if working with the CSV directly)
+Demographic Breakdown – Age-stratified insights for public health targeting
 
----
+Technical Architecture
 
-Feel free to fork, adapt, or build on this analysis.
+Data Processing: CSV ingestion with standardized age grouping and risk categorization
+Visualization: Power BI with interconnected visuals and dynamic slicers
+Measures (DAX):
+
+Diagnosis rate by segment
+Average HbA1c by age and carb intake bins
+Risk classification logic
+Dynamic text for clinical thresholds
+Key Insights
+HbA1c is predictive. Individuals with high HbA1c (≥6.5) are 4–6x more likely to have diabetes diagnosis than those with low HbA1c.
+Age matters. The 60–80 group shows elevated baseline diabetes rates; younger groups remain low unless HbA1c is high.
+Carbs don't tell the whole story. Carbohydrate intake varies widely within diagnosis groups, suggesting other lifestyle factors (exercise, sleep, stress) play equal or greater roles.
+Actionable segments. Medium HbA1c (5.7–6.4) represents a prediabetic window—individuals here are candidates for preventive intervention.
+What This Shows
+SQL/Data Processing: Structured data wrangling and segmentation
+Statistical Thinking: Understanding clinical thresholds, correlation vs. causation
+Dashboard Design: Clear visual hierarchy, appropriate chart selection, interactivity
+Business Communication: Translating analysis into decisions (who to intervene, when, how)
+Domain Knowledge: Familiarity with healthcare metrics and public health context
+How to Use
+Open Diabetes.pbix in Power BI Desktop or Power BI Service
+Review the diabetes.csv for raw data structure
+Navigate dashboards using age group and HbA1c category slicers
+Hover over visuals for tooltips explaining metrics and clinical significance
